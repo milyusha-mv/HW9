@@ -73,6 +73,9 @@ class ViewController: UIViewController {
     
     private var animationPresentElement = "slideLeft"
     private var animationCurveElement = "easeIn"
+    private var animationForceElement: CGFloat = 1
+    private var animationScaleXElement: CGFloat = 0
+    private var animationScaleYElement: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,15 +96,26 @@ class ViewController: UIViewController {
     func setAnimationSettings() {
         animationView.animation = animationPresentElement
         animationView.curve = animationCurveElement
+        animationView.force = animationForceElement
+        animationView.scaleX = animationScaleXElement
+        animationView.scaleY = animationScaleYElement
+        
         animationViewLable.text = """
-        animation: \(animationPresentElement)\n
-        curve:  \(animationCurveElement)
+        animation: \(animationPresentElement)
+        curve:  \(animationCurveElement)\n
+        force: \(animationForceElement)
+        scaleX: \(animationScaleXElement)
+        scaleY: \(animationScaleYElement)
         """
     }
     
     func configNextAnimationSettings() {
         animationPresentElement = animationPresent.randomElement() ?? "slideLeft"
         animationCurveElement = animationCurve.randomElement() ?? "easeIn"
+        animationForceElement = CGFloat(Int.random(in: 1...3))
+        animationScaleXElement = CGFloat(Int.random(in: 0...200))
+        animationScaleYElement = CGFloat(Int.random(in: 0...200))
+        
         startAnimationButton.setTitle("Next \"\(animationPresentElement)\"", for: .normal)
     }
 }
