@@ -80,8 +80,8 @@ class ViewController: UIViewController {
         animationView.layer.cornerRadius = 10
         
         animationViewLable.numberOfLines = 0
-        animationViewLable.isHidden = true
         animationViewLable.textAlignment = .left
+        animationViewLable.text = ""
         
         
     }
@@ -94,7 +94,6 @@ class ViewController: UIViewController {
         animation: \(animationPresentElement)\n
         curve:  \(animationCurveElement)
         """
-        animationViewLable.isHidden = false
         
         animationView.animate()
         
