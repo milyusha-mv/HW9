@@ -17,27 +17,54 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M5T-Yd-ry7">
-                                <rect key="frame" x="100" y="632" width="214" height="38"/>
+                                <rect key="frame" x="100" y="760" width="214" height="38"/>
                                 <color key="backgroundColor" systemColor="systemTealColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="214" id="HpL-1B-jSz"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="Start">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="startAnimationAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="nfJ-KO-LGb"/>
+                                </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LFm-1b-ZEB">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LFm-1b-ZEB" customClass="SpringView" customModule="Spring">
                                 <rect key="frame" x="87" y="167" width="240" height="251"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ggo-aK-qYz">
+                                        <rect key="frame" x="95" y="112.5" width="50" height="26"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemTealColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="0Vu-hq-gsw"/>
+                                    <constraint firstItem="Ggo-aK-qYz" firstAttribute="centerY" secondItem="LFm-1b-ZEB" secondAttribute="centerY" id="8C7-ig-tob"/>
+                                    <constraint firstItem="Ggo-aK-qYz" firstAttribute="centerX" secondItem="LFm-1b-ZEB" secondAttribute="centerX" id="voc-l3-7WE"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="M5T-Yd-ry7" secondAttribute="trailing" constant="100" id="87k-OY-1YS"/>
-                            <constraint firstItem="M5T-Yd-ry7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="8ch-rK-iiA"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="M5T-Yd-ry7" secondAttribute="bottom" constant="192" id="KEb-ch-S0F"/>
+                            <constraint firstItem="LFm-1b-ZEB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="123" id="5M1-MG-bff">
+                                <variation key="heightClass=compact-widthClass=regular" constant="64"/>
+                            </constraint>
+                            <constraint firstItem="LFm-1b-ZEB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7bR-im-mVp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="M5T-Yd-ry7" secondAttribute="bottom" constant="64" id="KEb-ch-S0F"/>
+                            <constraint firstItem="M5T-Yd-ry7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TMG-M5-vQx"/>
+                            <constraint firstItem="LFm-1b-ZEB" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.280134" id="pXb-wo-1CZ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="animationView" destination="LFm-1b-ZEB" id="III-rE-Pe4"/>
+                        <outlet property="animationViewLable" destination="Ggo-aK-qYz" id="WyZ-nP-J8J"/>
+                        <outlet property="startAnimationButton" destination="M5T-Yd-ry7" id="tt4-O9-raE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
