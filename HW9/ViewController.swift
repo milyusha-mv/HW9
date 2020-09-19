@@ -82,24 +82,26 @@ class ViewController: UIViewController {
         animationViewLable.numberOfLines = 0
         animationViewLable.textAlignment = .left
         animationViewLable.text = ""
-        
-        
     }
 
     @IBAction func startAnimationAction() {
+        setAnimationSettings()
+        animationView.animate()
+        configNextAnimationSettings()
+    }
+    
+    func setAnimationSettings() {
         animationView.animation = animationPresentElement
         animationView.curve = animationCurveElement
-        
         animationViewLable.text = """
         animation: \(animationPresentElement)\n
         curve:  \(animationCurveElement)
         """
-        
-        animationView.animate()
-        
+    }
+    
+    func configNextAnimationSettings() {
         animationPresentElement = animationPresent.randomElement() ?? "slideLeft"
         animationCurveElement = animationCurve.randomElement() ?? "easeIn"
-        
         startAnimationButton.setTitle("Next \"\(animationPresentElement)\"", for: .normal)
     }
 }
