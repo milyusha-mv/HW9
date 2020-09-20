@@ -28,7 +28,7 @@ extension Animation {
             counts = animationCurvesElement.count
         }
         
-        for index in 1...counts {
+        for index in 1..<counts {
             let animationElement = Animation(animationPresentElement: animationPresentsElement[index], animationCurveElement: animationCurvesElement[index], animationForceElement: Int.random(in: 1...3), animationScaleXElement: Int.random(in: 0...200), animationScaleYElement: Int.random(in: 0...200))
             animatons.append(animationElement)
         }

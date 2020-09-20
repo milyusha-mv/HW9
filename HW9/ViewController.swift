@@ -12,14 +12,9 @@ class ViewController: UIViewController {
     @IBOutlet var animationViewLable: UILabel!
     @IBOutlet var startAnimationButton: UIButton!
     @IBOutlet var animationView: SpringView!
-    
-//    private var animationPresentElement = "slideLeft"
-//    private var animationCurveElement = "easeIn"
-//    private var animationForceElement: CGFloat = 1
-//    private var animationScaleXElement: CGFloat = 0
-//    private var animationScaleYElement: CGFloat = 0
-//
+
     let animations = Animation.getAnimationSettings()
+    var count = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,35 +28,26 @@ class ViewController: UIViewController {
 
     @IBAction func startAnimationAction() {
         
-        setAnimationSettings()
+        setAnimationSettings(count)
         animationView.animate()
-        configNextAnimationSettings()
+        count += 1
     }
     
-    func setAnimationSettings() {
-        animationView.animation = animations.first?.animationPresentElement
-        animationView.curve = animationCurveElement
-        animationView.force = animationForceElement
-        animationView.scaleX = animationScaleXElement
-        animationView.scaleY = animationScaleYElement
+    func setAnimationSettings(_ index: Int) {
+        animationView.animation = animations[index].animationPresentElement
+        animationView.curve = animations[index].animationCurveElement
+        animationView.force = CGFloat(animations[index].animationForceElement)
+        animationView.scaleX = CGFloat(animations[index].animationScaleXElement)
+        animationView.scaleY = CGFloat(animations[index].animationScaleYElement)
 
         animationViewLable.text = """
-        animation: \(animationPresentElement)
-        curve:  \(animationCurveElement)\n
-        force: \(animationForceElement)
-        scaleX: \(animationScaleXElement)
-        scaleY: \(animationScaleYElement)
+        animation: \(animations[index].animationPresentElement)
+        curve:  \(animations[index].animationCurveElement)\n
+        force: \(animations[index].animationForceElement)
+        scaleX: \(animations[index].animationScaleXElement)
+        scaleY: \(animations[index].animationScaleYElement)
         """
-    }
-    
-    func configNextAnimationSettings() {
-//        animationPresentElement = animationPresent.randomElement() ?? "slideLeft"
-//        animationCurveElement = animationCurve.randomElement() ?? "easeIn"
-//        animationForceElement = CGFloat(Int.random(in: 1...3))
-//        animationScaleXElement = CGFloat(Int.random(in: 0...200))
-//        animationScaleYElement = CGFloat(Int.random(in: 0...200))
-//
-//        startAnimationButton.setTitle("Next \"\(animationPresentElement)\"", for: .normal)
+        startAnimationButton.setTitle("Next \"\(animations[index + 1].animationPresentElement)\"", for: .normal)
     }
 }
 
