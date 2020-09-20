@@ -13,69 +13,13 @@ class ViewController: UIViewController {
     @IBOutlet var startAnimationButton: UIButton!
     @IBOutlet var animationView: SpringView!
     
-    private let animationPresent = ["slideLeft",
-                             "slideRight",
-                             "slideDown",
-                             "slideUp",
-                             "squeezeLeft",
-                             "squeezeRight",
-                             "squeezeDown",
-                             "squeezeUp",
-                             "fadeIn",
-                             "fadeOut",
-                             "fadeOutIn",
-                             "fadeInLeft",
-                             "fadeInRight",
-                             "fadeInDown",
-                             "fadeInUp",
-                             "zoomIn",
-                             "zoomOut",
-                             "fall",
-                             "shake",
-                             "pop",
-                             "flipX",
-                             "flipY",
-                             "morph",
-                             "squeeze",
-                             "flash",
-                             "wobble",
-                             "swing"]
-    
-    private let animationCurve = ["easeIn",
-                                  "easeOut",
-                                  "easeInOut",
-                                  "linear",
-                                  "spring",
-                                  "easeInSine",
-                                  "easeOutSine",
-                                  "easeInOutSine",
-                                  "easeInQuad",
-                                  "easeOutQuad",
-                                  "easeInOutQuad",
-                                  "easeInCubic",
-                                  "easeOutCubic",
-                                  "easeInOutCubic",
-                                  "easeInQuart",
-                                  "easeOutQuart",
-                                  "easeInOutQuart",
-                                  "easeInQuint",
-                                  "easeOutQuint",
-                                  "easeInOutQuint",
-                                  "easeInExpo",
-                                  "easeOutExpo",
-                                  "easeInOutExpo",
-                                  "easeInCirc",
-                                  "easeOutCirc",
-                                  "easeInOutCirc",
-                                  "easeInBack",
-                                  "easeOutBack",
-                                  "easeInOutBack"]
-    
-    private var animationPresentElement = "slideLeft"
-    private var animationCurveElement = "easeIn"
-    private var animationForceElement: CGFloat = 1
-    private var animationScaleXElement: CGFloat = 0
-    private var animationScaleYElement: CGFloat = 0
+//    private var animationPresentElement = "slideLeft"
+//    private var animationCurveElement = "easeIn"
+//    private var animationForceElement: CGFloat = 1
+//    private var animationScaleXElement: CGFloat = 0
+//    private var animationScaleYElement: CGFloat = 0
+//
+    let animations = Animation.getAnimationSettings()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,18 +32,19 @@ class ViewController: UIViewController {
     }
 
     @IBAction func startAnimationAction() {
+        
         setAnimationSettings()
         animationView.animate()
         configNextAnimationSettings()
     }
     
     func setAnimationSettings() {
-        animationView.animation = animationPresentElement
+        animationView.animation = animations.first?.animationPresentElement
         animationView.curve = animationCurveElement
         animationView.force = animationForceElement
         animationView.scaleX = animationScaleXElement
         animationView.scaleY = animationScaleYElement
-        
+
         animationViewLable.text = """
         animation: \(animationPresentElement)
         curve:  \(animationCurveElement)\n
@@ -110,13 +55,13 @@ class ViewController: UIViewController {
     }
     
     func configNextAnimationSettings() {
-        animationPresentElement = animationPresent.randomElement() ?? "slideLeft"
-        animationCurveElement = animationCurve.randomElement() ?? "easeIn"
-        animationForceElement = CGFloat(Int.random(in: 1...3))
-        animationScaleXElement = CGFloat(Int.random(in: 0...200))
-        animationScaleYElement = CGFloat(Int.random(in: 0...200))
-        
-        startAnimationButton.setTitle("Next \"\(animationPresentElement)\"", for: .normal)
+//        animationPresentElement = animationPresent.randomElement() ?? "slideLeft"
+//        animationCurveElement = animationCurve.randomElement() ?? "easeIn"
+//        animationForceElement = CGFloat(Int.random(in: 1...3))
+//        animationScaleXElement = CGFloat(Int.random(in: 0...200))
+//        animationScaleYElement = CGFloat(Int.random(in: 0...200))
+//
+//        startAnimationButton.setTitle("Next \"\(animationPresentElement)\"", for: .normal)
     }
 }
 
